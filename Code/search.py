@@ -40,10 +40,13 @@ def binary_search_iterative(array, item):
     # TODO: implement binary search iteratively here
     left, right = 0, len(array)-1
 
+    if (left-right)+1 <= 0:
+        return None
+
     while left < right:
-        mid = (left+right)//2
+        mid = left+(right-left)//2
         if item == array[mid]:
-            return array.index(item) # returns an index of the item 
+            return item # returns an index of the item 
         elif item > array[mid]:
             left = mid + 1
         else:
@@ -58,9 +61,11 @@ def binary_search_iterative(array, item):
 def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
     left,right = 0, len(array)-1
-    mid = (left + right) // 2
+    if (left-right)+1 <= 0:
+        return None
+    mid = left + (right - left) // 2
     if array[mid] == item:
-        return array.index(item) # returns index of the item 
+        return item # returns index of the item 
     elif item > array[mid]:
         binary_search_recursive(array, item, mid+1, right)
     else:
