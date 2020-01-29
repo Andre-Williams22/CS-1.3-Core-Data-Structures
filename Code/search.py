@@ -40,17 +40,20 @@ def binary_search_iterative(array, item):
     # TODO: implement binary search iteratively here
     left, right = 0, len(array)-1
 
-    if (left-right)+1 <= 0:
+    if len(array) == 0:
         return None
 
-    while left < right:
+    while left <= right:
         mid = left+(right-left)//2
+        print("mid: ", mid)
         if item == array[mid]:
-            return item # returns an index of the item 
+            return mid # returns an index of the item 
         elif item > array[mid]:
-            left = mid + 1
+            
+            left = mid+1
         else:
-            right = mid -1 
+           
+            right = mid-1 
     return None
 
     # once implemented, change binary_search to call binary_search_iterative
@@ -60,18 +63,27 @@ def binary_search_iterative(array, item):
 
 def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
-    left,right = 0, len(array)-1
-    if (left-right)+1 <= 0:
-        return None
-    mid = left + (right - left) // 2
-    if array[mid] == item:
-        return item # returns index of the item 
-    elif item > array[mid]:
-        binary_search_recursive(array, item, mid+1, right)
-    else:
-        binary_search_recursive(array, item, left, mid-1)
+    if left is None and right is None:
+        left,right = 0, len(array)-1
 
-    return None 
+    mid = left + (right - left) // 2
+    #print("mid: ", mid)
+
+    if left > right: # if search through entire list and didn't find item 
+        return None 
+
+    if array[mid] == item:
+        return mid # returns index of the item 
+    elif item > array[mid]:
+        return binary_search_recursive(array, item, mid+1, right)
+    else:
+        return binary_search_recursive(array, item, left, mid-1)
+
+    # return None 
 
     # once implemented, change binary_search to call binary_search_recursive
     # to verify that your recursive implementation passes all tests
+
+#names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
+
+#print(binary_search(names, 'Alex'))
