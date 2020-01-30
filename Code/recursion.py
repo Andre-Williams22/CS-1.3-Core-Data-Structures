@@ -14,13 +14,13 @@ def factorial(n):
 
 def factorial_iterative(n):
     # TODO: implement the factorial function iteratively here
-    while n != 0 and n != 1:
-        factorial = 1
-        for i in range(1, n+1):
-            factorial *= i
+
+    factorial = 1
+    for i in range(1, n+1):
+        factorial *= i
           
-        return factorial
-    return None
+    return factorial
+
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests
 

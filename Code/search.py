@@ -18,11 +18,15 @@ def linear_search_iterative(array, item):
 
 def linear_search_recursive(array, item, index=0):
     # TODO: implement linear search recursively here
-    for num in array: # O(n)
-        if num == item: # O(1)
-            return num # O(1)
-        else:
-            return linear_search_recursive(array, item, index+1) # O(1)
+    #for num in array: # O(n)
+
+    if len(array) <= index:
+        return None
+
+    if array[index] == item: # O(1)
+        return index # O(1)
+    else:
+        return linear_search_recursive(array, item, index+1) # O(1)
     return None
     # once implemented, change linear_search to call linear_search_recursive
     # to verify that your recursive implementation passes all tests
@@ -32,6 +36,10 @@ def binary_search(array, item):
     """return the index of item in sorted array or None if item is not found"""
     # implement binary_search_iterative and binary_search_recursive below, then
     # change this to call your implementation to verify it passes all tests
+
+    # The time complexity of binary search is O(log(n)) for both the iterative and recursive solutions Space complexity is O(n)
+    # The time complexity of the linear search is O(n) for both solutions and the space complexity si O(n)
+
     return binary_search_iterative(array, item)
     # return binary_search_recursive(array, item)
 
@@ -48,13 +56,14 @@ def binary_search_iterative(array, item):
         #print("mid: ", mid)
         if item == array[mid]: # O(1)
             return mid # returns an index of the item 
-        elif item > array[mid]: # O(1)
+        elif item > array[mid]: 
             
-            left = mid+1 # O(1)
+            left = mid+1 
 
         else:
            
-            right = mid-1 # O(1)
+            right = mid-1 
+
     return None
 
     # once implemented, change binary_search to call binary_search_iterative
@@ -85,6 +94,6 @@ def binary_search_recursive(array, item, left=None, right=None):
     # once implemented, change binary_search to call binary_search_recursive
     # to verify that your recursive implementation passes all tests
 
-#names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
+# names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
 
-#print(binary_search(names, 'Alex'))
+# print(linear_search_recursive(names, 'Alex'))
