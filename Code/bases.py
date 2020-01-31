@@ -18,7 +18,26 @@ def decode(digits, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # TODO: Decode digits from binary (base 2)
-'''
+    decoded_digits = 0
+    for i, value in enumerate(digits[::-1]):
+        decoded_digits += int(value, base) * (base**i)
+    return decoded_digits 
+    # digits_string = digits.lower().split('.')
+    # exp = 0
+
+    # try:
+    #     exp = 0 - len(digits_string[1])
+    # except:
+    #     'No point'
+    # decode = 0
+    # for item in digits_string[::-1]:
+    #     decimal = 0
+    #     for digit in part[::-1]:
+    #         decimal += (string.digits + string.ascii_lowercase).index(digit) * base**expexp +=1
+    #     decode += decimal
+    # return decode 
+
+    '''
     reusable_nums = string.digits + string.ascii_lowercase
 
     toNum = 0
@@ -30,20 +49,6 @@ def decode(digits, base):
             final //= base
             power += 1
         return toNum  '''
-    digits_string = digits.lower().split('.')
-    exp = 0
-
-    try:
-        exp = 0 - len(digits_string[1])
-    except:
-        'No point'
-    decode = 0
-    for item in digits_string[::-1]:
-        decimal = 0
-        for digit in part[::-1]:
-            decimal += (string.digits + string.ascii_lowercase).index(digit) * base**expexp +=1
-        decode += decimal
-    return decode 
 
 
     # ...
@@ -72,19 +77,18 @@ def encode(number, base):
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
-    '''toNum = 0
-    power = 0
-    while digits > 0:
-        toNum += base1 ** power * (base1 % base2)
-        digits //= base2
-        power += 1
-    return toNum'''
+    # toNum = 0
+    # power = 0
+    # while digits > 0:
+    #     toNum += base1 ** power * (base1 % base2)
+    #     digits //= base2
+    #     power += 1
+    # return toNum
 
-    encoded_nums = ''
+    encoded_numbers = ''
     while number > 0:
-        num, rem = divmod(number, base)
-        encoded_nums += digits_to_char(rem)
-    
+        number, rem = divmod(number, base)
+        encoded_numbers += digits_to_char(rem)
     return encoded_numbers[::-1]
 
 
@@ -105,20 +109,20 @@ def convert(digits, base1, base2):
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
-    '''reusable = string.digits + string.ascii_lowercase
-    #reusable = dict()
-    toNum = 0
-    power = 0
-    final = ""
-    for digit in digits:
-        final = 10 * final + reusable[digit]
-        while final > 0:
-            toNum += base1 ** power * (base1 % base2)
-            final //= base
-            power += 1
-        return toNum '''
+    return encode(decode(digits, base1), base2)
 
-        return encode(decode(digits, base1), base2)
+    # reusable = string.digits + string.ascii_lowercase
+    # #reusable = dict()
+    # toNum = 0
+    # power = 0
+    # final = ""
+    # for digit in digits:
+    #     final = 10 * final + reusable[digit]
+    #     while final > 0:
+    #         toNum += base1 ** power * (base1 % base2)
+    #         final //= base
+    #         power += 1
+    #     return toNum
 
  
   
