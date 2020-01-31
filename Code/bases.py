@@ -18,7 +18,7 @@ def decode(digits, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # TODO: Decode digits from binary (base 2)
-
+'''
     reusable_nums = string.digits + string.ascii_lowercase
 
     toNum = 0
@@ -29,7 +29,21 @@ def decode(digits, base):
             toNum += base1 ** power * (base1 % base2)
             final //= base
             power += 1
-        return toNum
+        return toNum  '''
+    digits_string = digits.lower().split('.')
+    exp = 0
+
+    try:
+        exp = 0 - len(digits_string[1])
+    except:
+        'No point'
+    decode = 0
+    for item in digits_string[::-1]:
+        decimal = 0
+        for digit in part[::-1]:
+            decimal += (string.digits + string.ascii_lowercase).index(digit) * base**expexp +=1
+        decode += decimal
+    return decode 
 
 
     # ...
@@ -39,7 +53,9 @@ def decode(digits, base):
     # ...
     # TODO: Decode digits from any base (2 up to 36)
     # ...
-
+def digits_to_char(remainder=int) -> str:
+    '''Converts a digit to a character value. '''
+    return string.printable[remainder]
 
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
@@ -56,13 +72,20 @@ def encode(number, base):
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
-    toNum = 0
+    '''toNum = 0
     power = 0
     while digits > 0:
         toNum += base1 ** power * (base1 % base2)
         digits //= base2
         power += 1
-    return toNum
+    return toNum'''
+
+    encoded_nums = ''
+    while number > 0:
+        num, rem = divmod(number, base)
+        encoded_nums += digits_to_char(rem)
+    
+    return encoded_numbers[::-1]
 
 
 def convert(digits, base1, base2):
@@ -82,7 +105,7 @@ def convert(digits, base1, base2):
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
-    reusable = string.digits + string.ascii_lowercase
+    '''reusable = string.digits + string.ascii_lowercase
     #reusable = dict()
     toNum = 0
     power = 0
@@ -93,7 +116,9 @@ def convert(digits, base1, base2):
             toNum += base1 ** power * (base1 % base2)
             final //= base
             power += 1
-        return toNum
+        return toNum '''
+
+        return encode(decode(digits, base1), base2)
 
  
   
