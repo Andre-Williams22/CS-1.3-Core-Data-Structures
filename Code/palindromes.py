@@ -22,6 +22,19 @@ def is_palindrome_iterative(text):
     pass
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
+    best = " ?!,.;:-_'"
+    for char in best:
+        text = text.replace(char, '')
+    left = 0
+    right = len(text) - 1
+    if len(text) < 1:
+        return True
+    while left <= right:
+        if text[left].lower() != text[right].lower():
+            return False
+        left += 1
+        right -= 1
+    return True
 
 
 def is_palindrome_recursive(text, left=None, right=None):
@@ -29,6 +42,20 @@ def is_palindrome_recursive(text, left=None, right=None):
     pass
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your iterative implementation passes all tests
+
+    if left == None:
+        left = 0
+        right = len(text) - 1
+        best = " ?!,.;:-_'"
+        for char in best:
+            text = text.replace(char, '')
+    if len(text) < 1:
+        return True
+    if left <= right and right < len(text):
+        if text[left].lower() != text[right].lower():
+            return False
+        is_palindrome_recursive(text, left+1, right-1)
+    return True
 
 
 def main():
