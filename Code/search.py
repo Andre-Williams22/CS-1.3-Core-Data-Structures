@@ -63,7 +63,6 @@ def binary_search_iterative(array, item):
         else:
            
             right = mid-1 
-
     return None
 
     # once implemented, change binary_search to call binary_search_iterative
