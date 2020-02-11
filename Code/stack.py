@@ -21,50 +21,50 @@ class LinkedStack(object):
 
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
-        # TODO: Check if empty
-        if self.list is None:
+        #TODO: Check if empty
+        if self.list.head is None:
             return True
         else:
             return False
+        #return self.list.head is None
 
     def length(self):
         """Return the number of items in this stack."""
         # TODO: Count number of items
-        count = 0
-        for item in self.list:
-            count += 1
-        return count 
+        return self.list.length()
 
 
     def push(self, item):
         """Insert the given item on the top of this stack.
         Running time: O(1) – Why? [TODO]"""
         # TODO: Push given item
-        new_node = Node(item)
+        if self.is_empty() is True:
+            return None
 
-        if self.is_empty:
-            self.tail = new_node
-        else: 
-            new_node.next = self.head
-        self.head = new_node
-        
+        return self.list.append(item)
 
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
         # TODO: Return top item, if any
-        new_node = Node(item)
-        if self.is_empty:
+        
+        if self.list.is_empty():
             return None 
-        return self.list[0]
+        return self.list.tail.data # looks at end of ll which is top of stack and grabs the tail.
 
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Why? [TODO]"""
         # TODO: Remove and return top item, if any
-        new_node = Node(item)
+        if self.is_empty() is True:
+            raise ValueError('List is empty: {}'.format(self.list))
+        temp_node = self.list.tail.data
+        return self.list.delete(temp_node)
+       
+
+
 
 
 # Implement ArrayStack below, then change the assignment at the bottom
@@ -127,5 +127,5 @@ class ArrayStack(object):
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-#Stack = LinkedStack
-Stack = ArrayStack
+Stack = LinkedStack
+#Stack = ArrayStack
