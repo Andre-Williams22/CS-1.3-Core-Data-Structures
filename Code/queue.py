@@ -35,7 +35,7 @@ class LinkedQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Why? Because you access the tail and add a new item."""
         # TODO: Insert given item
         # if self.is_empty() is True:
         #     return None 
@@ -51,7 +51,7 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Why? Because you add an item to the front of the list """
         # TODO: Remove and return front item, if any
         if self.is_empty() is True:
             raise ValueError('List is empty: {}'.format(self.list))
@@ -94,15 +94,15 @@ class ArrayQueue(object):
         return count 
 
     def enqueue(self, item):
-        """Insert the given item at the back of this queue.
-        Running time: O(1) – Why? Because it adds item to the back of array"""
+        """ Insert the given item at the back of this queue.
+        Running time: O(1) – Why? Because it adds item to the back of array """
         # TODO: Insert given item
         return self.list.append(item)
 
 
     def front(self):
-        """Return the item at the front of this queue without removing it,
-        or None if this queue is empty."""
+        """ Return the item at the front of this queue without removing it,
+        or None if this queue is empty. """
         # TODO: Return front item, if any
         if len(self.list) == 0:
             return None  
@@ -111,7 +111,7 @@ class ArrayQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(n) – Why? Because you have to move the items from their index over since it's contiguous"""
+        Running time: O(n) – Why? Because you have to move the items from their index over since it's contiguous. """
         # TODO: Remove and return front item, if any
         if self.is_empty() is True:
             raise ValueError('List is empty: {}'.format(self.list))
