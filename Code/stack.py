@@ -36,10 +36,8 @@ class LinkedStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(1) – Why? [TODO]"""
+        Running time: O(1) – Why? Because this adds the data to the first index in the list"""
         # TODO: Push given item
-        # if self.is_empty() is True:
-        #     return None
 
         return self.list.prepend(item)
 
@@ -56,7 +54,7 @@ class LinkedStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(1) – Why? [TODO]"""
+        Running time: O(1) – Why? Because this adds data to the beginning of the linked list which is a constant time operation"""
         # TODO: Remove and return top item, if any
         if self.is_empty() is True:
             raise ValueError('List is empty: {}'.format(self.list))
@@ -103,7 +101,7 @@ class ArrayStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(1) – Why? [TODO]"""
+        Running time: O(1) – Why? Adds an item to the end of the stack which is in constant time"""
         # TODO: Insert given item
         return self.list.append(item)
 
@@ -119,7 +117,7 @@ class ArrayStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(1) – Why? [TODO]"""
+        Running time: O(1) – Why? Deletes item at the end of the stack which is constant time."""
         # TODO: Remove and return top item, if any
         if self.is_empty() is True:
             raise ValueError('List is empty: {}'.format(self.list))
