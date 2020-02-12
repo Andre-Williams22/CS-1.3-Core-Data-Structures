@@ -38,10 +38,10 @@ class LinkedStack(object):
         """Insert the given item on the top of this stack.
         Running time: O(1) – Why? [TODO]"""
         # TODO: Push given item
-        if self.is_empty() is True:
-            return None
+        # if self.is_empty() is True:
+        #     return None
 
-        return self.list.append(item)
+        return self.list.prepend(item)
 
 
     def peek(self):
@@ -51,7 +51,7 @@ class LinkedStack(object):
         
         if self.list.is_empty():
             return None 
-        return self.list.tail.data # looks at end of ll which is top of stack and grabs the tail.
+        return self.list.head.data # looks at end of ll which is top of stack and grabs the tail.
 
     def pop(self):
         """Remove and return the item on the top of this stack,
@@ -60,8 +60,10 @@ class LinkedStack(object):
         # TODO: Remove and return top item, if any
         if self.is_empty() is True:
             raise ValueError('List is empty: {}'.format(self.list))
-        temp_node = self.list.tail.data
-        return self.list.delete(temp_node)
+        temp_node = self.list.head.data
+        print("top of stack: ", temp_node)
+        self.list.delete(temp_node)
+        return temp_node
        
 
 

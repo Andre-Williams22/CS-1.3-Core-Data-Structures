@@ -83,9 +83,10 @@ class LinkedList(object):
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node at the given index and return its data
+        
         node = self.head
         if index == 0:
-            return node
+            return node.data
             
         
         for i in range(index):
@@ -115,21 +116,18 @@ class LinkedList(object):
        
         # adds to middle of linkedlist
         counter = 0
-        new_node = Node(item)
+        
         while counter < (index-1):
             node = node.next 
             counter += 1 
+        # for _ in range(index-1):
+        #     node = node.next
+
+        new_node = Node(item)
         new_node.next = node.next
         node.next = new_node
         self.size += 1  
         
-            
-
-
-
-
-    
-
 
 
     def append(self, item):
