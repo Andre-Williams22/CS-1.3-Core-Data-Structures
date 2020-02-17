@@ -27,7 +27,7 @@ class HashTable(object):
         """Return the load factor, the ratio of number of entries to buckets.
         Best and worst case running time: ??? under what conditions? [TODO]"""
         # TODO: Calculate load factor
-        # return ...
+        return self.size / len(self.buckets)
 
     def keys(self):
         """Return a list of all keys in this hash table.
@@ -60,7 +60,7 @@ class HashTable(object):
 
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: O(n) under what conditions? [TODO]"""
         # Count number of key-value entries in each of the buckets
         item_count = 0
         for bucket in self.buckets:
@@ -146,13 +146,14 @@ class HashTable(object):
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
         # TODO: Get a list to temporarily hold all current key-value entries
-        # ...
+        key_value_entries = self.items()
         # TODO: Create a new list of new_size total empty linked list buckets
-        # ...
+        new_list = [LinkedList() for i in range(new_size)]
         # TODO: Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
-        # ...
-
+        for item in key_value_entries:
+            new_list.append(item)
+            
 
 def test_hash_table():
     ht = HashTable(4)
