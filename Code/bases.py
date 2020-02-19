@@ -20,7 +20,8 @@ def decode(digits, base):
     # TODO: Decode digits from binary (base 2)
     decoded_digits = 0
     for i, value in enumerate(digits[::-1]):
-        decoded_digits += int(value, base) * (base**i)
+        nultiplier = i**base
+        decoded_digits += int(value, base) * (multiplier) #base ** i
     return decoded_digits 
     # digits_string = digits.lower().split('.')
     # exp = 0
