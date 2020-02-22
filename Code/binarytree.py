@@ -24,18 +24,29 @@ class BinaryTreeNode(object):
     def is_branch(self):
         """Return True if this node is a branch (has at least one child)."""
         # TODO: Check if either left child or right child has a value
-        return ... or ...
+        if self.left.data != 0 and self.right.data != 0:
+            return True 
+        else:
+            return False 
 
     def height(self):
         """Return the height of this node (the number of edges on the longest
         downward path from this node to a descendant leaf node).
-        TODO: Best and worst case running time: ??? under what conditions?"""
+        TODO: Best and worst case running time: O(1) or O(n) under what conditions? O(1) given that the item we're looking for is the first.
+        If not then we have to traverse through most of the nodes in the tree. """
+        if self.data is None:
+            return 0
         # TODO: Check if left child has a value and if so calculate its height
-        ...
+        if self.left != 0:
+            leftdepth = self.left.height()
         # TODO: Check if right child has a value and if so calculate its height
-        ...
+        if self.right != 0:
+            rightdepth = self.right.height()
         # Return one more than the greater of the left height and right height
-        ...
+        if leftdepth > rightdepth:
+            leftdepth+1
+        else:
+            rightdepth+1
 
 
 class BinarySearchTree(object):
@@ -61,8 +72,11 @@ class BinarySearchTree(object):
         downward path from this tree's root node to a descendant leaf node).
         TODO: Best and worst case running time: ??? under what conditions?"""
         # TODO: Check if root node has a value and if so calculate its height
-        ...
-
+        if self.root is None:
+            return 0 
+        height = 0
+        
+        
     def contains(self, item):
         """Return True if this binary search tree contains the given item.
         TODO: Best case running time: ??? under what conditions?
