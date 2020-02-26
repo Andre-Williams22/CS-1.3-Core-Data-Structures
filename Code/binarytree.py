@@ -112,11 +112,11 @@ class BinarySearchTree(object):
         # TODO: Check if the given item should be inserted left of parent node
         if ...:
             # TODO: Create a new node and set the parent's left child
-            parent.left = ...
+            parent.left = Node(parent)
         # TODO: Check if the given item should be inserted right of parent node
         elif ...:
             # TODO: Create a new node and set the parent's right child
-            parent.right = ...
+            parent.right = Node(parent)
         # TODO: Increase the tree size
         self.size ...
 

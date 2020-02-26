@@ -16,12 +16,13 @@ def contains(text, pattern):
     #     else:
     #         return False 
     # return True
-    if len(pattern) < 1:
-        return True
-    for i in range(0, (len(text) - len(pattern) + 1)):
-        if text[i:(i+len(pattern))] == pattern:
-            return True
-    return False
+    # if len(pattern) < 1:
+    #     return True
+    # for i in range(0, (len(text) - len(pattern) + 1)):
+    #     if text[i:(i+len(pattern))] == pattern:
+    #         return True
+    # return False
+    return find_index(text, pattern) != None
 
 
 def find_index(text, pattern):
@@ -32,15 +33,12 @@ def find_index(text, pattern):
     # TODO: Implement find_index here (iteratively and/or recursively)
     if len(pattern) < 1:
         return 0
-
-    # for i in range(0, (len(text)-len(pattern)+1)):
-    #     if text[i:(i+len(pattern))] == pattern:
-    #         return i 
-    # return None
     for i in range(0, (len(text) - len(pattern) + 1)):
         if text[i:(i+len(pattern))] == pattern:
             return i
     return None
+
+
 
 
 
