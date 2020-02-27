@@ -103,7 +103,7 @@ class BinarySearchTree(object):
         # Handle the case where the tree is empty
         if self.is_empty():
             # TODO: Create a new root node
-            self.root = ...
+            self.root = Node()
             # TODO: Increase the tree size
             self.size ...
             return
