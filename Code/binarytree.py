@@ -105,7 +105,7 @@ class BinarySearchTree(object):
             # TODO: Create a new root node
             self.root = Node()
             # TODO: Increase the tree size
-            self.size ...
+            self.size += 1 
             return
         # Find the parent node of where the given item should be inserted
         parent = self._find_parent_node_recursive(item, self.root)
@@ -118,7 +118,7 @@ class BinarySearchTree(object):
             # TODO: Create a new node and set the parent's right child
             parent.right = Node(parent)
         # TODO: Increase the tree size
-        self.size ...
+        self.size += 1
 
     def _find_node_iterative(self, item):
         """Return the node containing the given item in this binary search tree,
