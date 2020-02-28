@@ -10,7 +10,7 @@ import re
 
 def cleans_palindrome(text): 
     ''' Function to clean the text before checking to see if it's a palindrome '''
-    clean = "?!.,:;-_'"
+    clean = "?!.,:;-_' "
     for item in clean:
         text = text.replace(item, '') # cleans the text returning only the string
     return text 
@@ -21,8 +21,8 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    return is_palindrome_iterative(text)
-    #return is_palindrome_recursive(text)
+    #return is_palindrome_iterative(text)
+    return is_palindrome_recursive(text)
 
 
 def is_palindrome_iterative(text):
@@ -41,11 +41,11 @@ def is_palindrome_iterative(text):
         right -= 1 # increment the right by 1 
     return True
 
-    text = re.sub('[^A-Za-z]+', '', text)
-    for i in range(int(len(text)//2)):
-        if text[i].lower() != text[len(text)-1-i].lower():
-            return False
-    return True 
+    # text = re.sub('[^A-Za-z]+', '', text)
+    # for i in range(int(len(text)//2)):
+    #     if text[i].lower() != text[len(text)-1-i].lower():
+    #         return False
+    # return True 
 
 
 def is_palindrome_recursive(text, left=None, right=None):
@@ -55,10 +55,13 @@ def is_palindrome_recursive(text, left=None, right=None):
     # to verify that your iterative implementation passes all tests
     if left == None:
         left = 0
-        right = len(text) - 1
+        
         best = " ?!,.;:-_'"
         for char in best:
             text = text.replace(char, '')
+        right = len(text) - 1
+    if left >= right:
+        return True 
     if len(text) < 1:
         return True
     if left <= right and right < len(text):
@@ -67,14 +70,14 @@ def is_palindrome_recursive(text, left=None, right=None):
         return is_palindrome_recursive(text, left+1, right-1)
     #return True
 
-    text = re.sub('[^A-Za-z]+', '', text)
-    try: 
-        for i in range(int(len(text)//2)):
-            if text[i].lower() != text[len(text)-1-i].lower():
-                return False 
-        return True
-    except:
-        is_palindrome_recursive(text, left=0, right=len(text)-1)
+    # text = re.sub('[^A-Za-z]+', '', text)
+    # try: 
+    #     for i in range(int(len(text)//2)): # splits string in half 
+    #         if text[i].lower() != text[len(text)-1-i].lower(): # checks to see if two letters are the same 
+    #             return False 
+    #     return True
+    # except:
+    #     is_palindrome_recursive(text, left=0, right=len(text)-1)
 
 
 
