@@ -1,5 +1,5 @@
 #!python
-
+from utils import time_it
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
@@ -24,7 +24,7 @@ def contains(text, pattern):
     # return False
     return find_index(text, pattern) != None
 
-
+@time_it
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found."""
@@ -41,7 +41,7 @@ def find_index(text, pattern):
 
 
 
-
+@time_it
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
     or an empty list if not found."""
