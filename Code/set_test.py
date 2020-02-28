@@ -15,7 +15,7 @@ class TestTreeset(unnittest.TestCase):
 
     def test_add(self, element):
         # Create node with no children
-        pass
+        assert 
 
 
 
