@@ -79,8 +79,8 @@ class BinarySearchTree(object):
         
     def contains(self, item):
         """Return True if this binary search tree contains the given item.
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        TODO: Best case running time: O(1) because the item could be the first in the tree and O(log n) average case becaus of binary search.
+        TODO: Worst case running time: O(n) because you would have to traverse through the entire tree"""
         # Find a node with the given item, if any
         node = self._find_node_recursive(item, self.root)
         # Return True if a node was found, or False
@@ -89,34 +89,34 @@ class BinarySearchTree(object):
     def search(self, item):
         """Return an item in this binary search tree matching the given item,
         or None if the given item is not found.
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        TODO: Best case running time: O(1) because the item could be the first in the tree. Average case is O(log n) because binary search is done on the tree.
+        TODO: Worst case running time:O(n) because you would have to traverse through the entire tree. """
         # Find a node with the given item, if any
         node = self._find_node_recursive(item, self.root)
         # TODO: Return the node's data if found, or None
-        return node.data if ... else None
+        return node.data if node is not None else None 
 
     def insert(self, item):
         """Insert the given item in order into this binary search tree.
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        TODO: Best case running time: O(1) under what conditions? If root is inserted
+        TODO: Worst case running time: O(log(n)) under what conditions? Trying to fit the node in correct spot other than root""" 
         # Handle the case where the tree is empty
         if self.is_empty():
             # TODO: Create a new root node
-            self.root = Node()
+            self.root = BinaryTreeNode(item)
             # TODO: Increase the tree size
             self.size += 1 
             return
         # Find the parent node of where the given item should be inserted
         parent = self._find_parent_node_recursive(item, self.root)
         # TODO: Check if the given item should be inserted left of parent node
-        if ...:
+        if item < parent.data:
             # TODO: Create a new node and set the parent's left child
-            parent.left = Node(parent)
+            parent.left = BinaryTreeNode(item)
         # TODO: Check if the given item should be inserted right of parent node
-        elif ...:
+        elif item > parent.data:
             # TODO: Create a new node and set the parent's right child
-            parent.right = Node(parent)
+            parent.right = BinaryTreeNode(item)
         # TODO: Increase the tree size
         self.size += 1
 
@@ -156,17 +156,17 @@ class BinarySearchTree(object):
             # Not found (base case)
             return None
         # TODO: Check if the given item matches the node's data
-        elif ...:
+        elif item == self.node.item:
             # Return the found node
             return node
         # TODO: Check if the given item is less than the node's data
-        elif ...:
+        elif item < self.node.item:
             # TODO: Recursively descend to the node's left child, if it exists
-            return ...
+            return _find_node_recursive(item, node.left)
         # TODO: Check if the given item is greater than the node's data
-        elif ...:
+        elif item > self.node.item:
             # TODO: Recursively descend to the node's right child, if it exists
-            return ...
+            return _find_node_recursive(item, node.right)
 
     def _find_parent_node_iterative(self, item):
         """Return the parent node of the node containing the given item
