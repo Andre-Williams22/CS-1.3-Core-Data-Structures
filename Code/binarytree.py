@@ -1,6 +1,6 @@
 #!python
 from stack import LinkedStack
-
+from queue import LinkedQueue
 class BinaryTreeNode(object):
 
     def __init__(self, data):
@@ -24,7 +24,7 @@ class BinaryTreeNode(object):
     def is_branch(self):
         """Return True if this node is a branch (has at least one child)."""
         # TODO: Check if either left child or right child has a value
-        if (self.left != 0) and (self.right != 0):
+        if (self.left != None) or (self.right != None):
             return True 
         else:
             return False 
@@ -348,22 +348,24 @@ class BinarySearchTree(object):
     def _traverse_level_order_iterative(self, start_node, visit):
         """Traverse this binary tree with iterative level-order traversal (BFS).
         Start at the given node and visit each node with the given function.
-        TODO: Running time: ??? Why and under what conditions?
-        TODO: Memory usage: ??? Why and under what conditions?"""
+        TODO: Running time: O(n) Why and under what conditions? We visit every node 
+        TODO: Memory usage: O(n) Why and under what conditions? We visit every node"""
         # TODO: Create queue to store nodes not yet traversed in level-order
-        queue = ...
+        queue = LinkedQueue()
         # TODO: Enqueue given starting node
-        ...
+        queue.enqueue(start_node)
         # TODO: Loop until queue is empty
-        while ...:
+        while queue is not None:
             # TODO: Dequeue node at front of queue
-            node = ...
+            node = queue.dequeue()
             # TODO: Visit this node's data with given function
-            ...
+            visit(node.data)
             # TODO: Enqueue this node's left child, if it exists
-            ...
+            if node.left:
+                queue.enqueue(node.left)
             # TODO: Enqueue this node's right child, if it exists
-            ...
+            if node.right:
+                queue.enqueue(node.right)
 
 
 def test_binary_search_tree():
