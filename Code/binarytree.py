@@ -1,5 +1,5 @@
 #!python
-
+from stack import LinkedStack
 
 class BinaryTreeNode(object):
 
@@ -318,14 +318,16 @@ class BinarySearchTree(object):
     def _traverse_post_order_recursive(self, node, visit):
         """Traverse this binary tree with recursive post-order traversal (DFS).
         Start at the given node and visit each node with the given function.
-        TODO: Running time: ??? Why and under what conditions?
-        TODO: Memory usage: ??? Why and under what conditions?"""
+        TODO: Running time: O(n) Why and under what conditions? visiting every node in tree
+        TODO: Memory usage: O(n) Why and under what conditions? visiting every node in tree"""
         # TODO: Traverse left subtree, if it exists
-        ...
+        if node.left:
+            return self._traverse_post_order_recursive(node.left, visit)
         # TODO: Traverse right subtree, if it exists
-        ...
+        if node.right:
+            return self._traverse_post_order_recursive(node.right, visit)
         # TODO: Visit this node's data with given function
-        ...
+        visit(node.data)
 
     def _traverse_post_order_iterative(self, node, visit):
         """Traverse this binary tree with iterative post-order traversal (DFS).
