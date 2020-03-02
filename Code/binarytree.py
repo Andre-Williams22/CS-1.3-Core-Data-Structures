@@ -155,22 +155,22 @@ class BinarySearchTree(object):
         """Return the node containing the given item in this binary search tree,
         or None if the given item is not found. Search is performed recursively
         starting from the given node (give the root node to start recursion).
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        TODO: Best case running time: O(1) under what conditions? The node is the root
+        TODO: Worst case running time: O(log(n)) under what conditions? We traverse to the last node."""
         # Check if starting node exists
         if node is None:
             # Not found (base case)
             return None
         # TODO: Check if the given item matches the node's data
-        elif item == self.node.data:
+        elif item == node.data:
             # Return the found node
             return node
         # TODO: Check if the given item is less than the node's data
-        elif item < self.node.item:
+        elif item < node.data:
             # TODO: Recursively descend to the node's left child, if it exists
             return self._find_node_recursive(item, node.left)
         # TODO: Check if the given item is greater than the node's data
-        elif item > self.node.item:
+        elif item > node.data:
             # TODO: Recursively descend to the node's right child, if it exists
             return self._find_node_recursive(item, node.right)
 
