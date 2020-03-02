@@ -16,10 +16,11 @@ class BinaryTreeNode(object):
     def is_leaf(self):
         """Return True if this node is a leaf (has no children)."""
         # TODO: Check if both left child and right child have no value
-        if self.left is None and self.right is None:
-            return True
-        else:
-            return False
+        return (self.left is None) and (self.right is None)
+        # if self.left is None and self.right is None:
+        #     return True
+        # else:
+        #     return False
 
     def is_branch(self):
         """Return True if this node is a branch (has at least one child)."""
@@ -47,9 +48,9 @@ class BinaryTreeNode(object):
                 sheight = self.right.height() + 1 #rightdepth = self.right.height()
             # Return one more than the greater of the left height and right height
             if fheight > sheight:
-                fheight+1
+                return fheight
             else:
-                sheight+1
+                return sheight
 
 
 class BinarySearchTree(object):
@@ -75,7 +76,7 @@ class BinarySearchTree(object):
         downward path from this tree's root node to a descendant leaf node).
         TODO: Best and worst case running time: ??? under what conditions?"""
         # TODO: Check if root node has a value and if so calculate its height
-        if self.root is None:
+        if self.root.data is None:
             return None
         return self.root.height()
         
@@ -97,8 +98,10 @@ class BinarySearchTree(object):
         # Find a node with the given item, if any
         node = self._find_node_recursive(item, self.root)
         # TODO: Return the node's data if found, or None
-        return node.data if node is not None else None 
-
+        #return node.data if node is not None else None 
+        if node is not None:
+            return node.data
+        return None
     def insert(self, item):
         """Insert the given item in order into this binary search tree.
         TODO: Best case running time: O(1) under what conditions? If root is inserted
@@ -159,7 +162,7 @@ class BinarySearchTree(object):
             # Not found (base case)
             return None
         # TODO: Check if the given item matches the node's data
-        elif item == self.node.item:
+        elif item == self.node.data:
             # Return the found node
             return node
         # TODO: Check if the given item is less than the node's data
@@ -209,7 +212,7 @@ class BinarySearchTree(object):
         # Check if starting node exists
         if node is None:
             # Not found (base case)
-            return None
+            return parent
         # TODO: Check if the given item matches the node's data
         if item == node.data:
             # Return the parent of the found node
@@ -273,10 +276,16 @@ class BinarySearchTree(object):
         stack = LinkedStack()
         node = self.root
 
-        while not stack.is_empty() or node != None:
+        while ((node is not None) or (not stack.is_empty())):
             if node is not None:
                 stack.push(node)
+                node = node.left
+
+            elif not stack.is_empty():
+                node = stack.pop()
+                visit(node.data)
                 node = node.right
+
     def items_pre_order(self):
         """Return a pre-order list of all items in this binary search tree."""
         items = []
