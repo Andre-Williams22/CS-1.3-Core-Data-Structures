@@ -42,16 +42,19 @@ class Treeset:
 
     def union(self,other_set):
         '''return a new set that is the union of this set and other_set'''
-        new_set = Set()
-        for element in self.tree.items_in_order():
-            if element in self.tree.items_in_order and element in other_set:
+        new_set = Treeset()
+        for element in self.tree.items_pre_order(): #O(log(m)) # pre-order will generate the exact same tree every time 
+            new_set.add(element)
+
+        for element in self.tree.items_pre_order(): # pre-order will generate the exact same tree every time
+            if not new_set.contains(element): #O(log(m))
                 new_set.add(element)
         return new_set 
         
 
     def intersection(self,other_set):
         '''return a new set that is the intersection of this set and other_set  '''
-        new_set = Set()
+        new_set = Treeset()
         for element in self.tree.items_in_order():
             if other_set.contains(element):
                 new_set.add(element)
@@ -60,6 +63,14 @@ class Treeset:
 
     def difference(self,other_set):
         '''return a new set that is the difference of this set and other_set '''
+        # make a new empty set
+        # iterate over each item in the self set 
+        # if the item is not in other set then add to the new set
+        # return the new set 
 
-    def is_subset(other_set):
+
+    def is_subset(self, other_set):
         '''return a boolean indicating whether other_set is a subset of this set'''
+
+        return False
+        # found an item not in the two sets
