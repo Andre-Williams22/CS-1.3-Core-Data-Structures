@@ -8,8 +8,8 @@ class Treeset:
         #self.hash = HashTable()
         self.tree = BinarySearchTree()
         self.size = 0 
-        if items is not None:
-            for item in items:
+        if elements is not None:
+            for item in elements:
                 self.insert(item)
 
 
@@ -26,7 +26,7 @@ class Treeset:
     def add(self,element):
         ''' add element to this set, if not present already '''
         if self.tree.contains(element):
-            raise ValueError(f'Cannot add element to set again: {}'.format(element))
+            raise ValueError(f'Cannot add element to set again: {element}')
         else:
             self.tree.insert(element)
             self.size += 1
@@ -38,7 +38,7 @@ class Treeset:
             self.tree.delete(element)
             self.size -= 1 
         else:
-            raise ValueError(f'Element is not in the set: {}'.format(element))
+            raise ValueError(f'Element is not in the set: {element}')
 
     def union(self,other_set):
         '''return a new set that is the union of this set and other_set'''
@@ -55,7 +55,7 @@ class Treeset:
     def intersection(self,other_set):
         '''return a new set that is the intersection of this set and other_set  '''
         new_set = Treeset()
-        for element in self.tree.items_in_order():
+        for element in self.tree.items_pre_order():
             if other_set.contains(element):
                 new_set.add(element)
         return new_set 
@@ -64,13 +64,22 @@ class Treeset:
     def difference(self,other_set):
         '''return a new set that is the difference of this set and other_set '''
         # make a new empty set
+        new_set = Treeset()
         # iterate over each item in the self set 
+        for element in self.tree.items_pre_order:
         # if the item is not in other set then add to the new set
-        # return the new set 
+            if element not in other_set.contains():
+                new_set.add(element)
+        # return the new set
+        return new_set 
 
 
     def is_subset(self, other_set):
         '''return a boolean indicating whether other_set is a subset of this set'''
-
-        return False
-        # found an item not in the two sets
+        if len(self) > len(other_set): 
+            return False
+        for item in self.tree.items_pre_order():
+            if not other_set.contains(item):
+                # found an item not in the two sets
+                return False
+        return True

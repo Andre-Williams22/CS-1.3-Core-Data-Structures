@@ -11,7 +11,7 @@ class BinaryTreeNode(object):
 
     def __repr__(self):
         """Return a string representation of this binary tree node."""
-        return 'BinaryTreeNode({!r})'.format(self.data)
+        return 'BinaryTreeNode({!r})'.format(self)
 
     def is_leaf(self):
         """Return True if this node is a leaf (has no children)."""
