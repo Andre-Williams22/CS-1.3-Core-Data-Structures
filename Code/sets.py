@@ -14,17 +14,20 @@ class Treeset:
 
 
     def size(self):
-        '''property that tracks the number of elements in constant time '''
+        '''property that tracks the number of elements in constant time 
+        Average Case Runtime: O(1) because we're updating the size variable after each deletion and addition to an element'''
         return self.size 
 
 
     def contains(self,element):
-        ''' return a boolean indicating whether element is in this set '''
+        ''' return a boolean indicating whether element is in this set 
+        Average Case Runtime: O(log(n)) because we're searching the binary search tree'''
         return self.tree.contains(element)
 
 
     def add(self,element):
-        ''' add element to this set, if not present already '''
+        ''' add element to this set, if not present already 
+        Average case Runtime: O(log (n)) Because we must apply binary search to add an element '''
         if self.tree.contains(element):
             raise ValueError(f'Cannot add element to set again: {element}')
         else:
@@ -33,7 +36,8 @@ class Treeset:
 
 
     def remove(self,element):
-        '''remove element from this set, if present, or else raise KeyError '''
+        '''remove element from this set, if present, or else raise KeyError
+        Average case Runtime: O(log (n))  Because we perform binary search to find the item to delete'''
         if self.tree.contains(element):
             self.tree.delete(element)
             self.size -= 1 
@@ -41,7 +45,8 @@ class Treeset:
             raise ValueError(f'Element is not in the set: {element}')
 
     def union(self,other_set):
-        '''return a new set that is the union of this set and other_set'''
+        '''return a new set that is the union of this set and other_set
+        Runtime: (m + n) * log(m) because we add the length of each set to the time of the add function calls '''
         new_set = Treeset()
         for element in self.tree.items_pre_order(): #O(log(m)) # pre-order will generate the exact same tree every time 
             new_set.add(element)
@@ -53,7 +58,9 @@ class Treeset:
         
 
     def intersection(self,other_set):
-        '''return a new set that is the intersection of this set and other_set  '''
+        '''return a new set that is the intersection of this set and other_set  
+        Average Case Runtime: O(n) '''
+
         new_set = Treeset()
         for element in self.tree.items_pre_order():
             if other_set.contains(element):
@@ -62,7 +69,8 @@ class Treeset:
 
 
     def difference(self,other_set):
-        '''return a new set that is the difference of this set and other_set '''
+        '''return a new set that is the difference of this set and other_set 
+        Average Case Runtime: O(n)'''
         # make a new empty set
         new_set = Treeset()
         # iterate over each item in the self set 
@@ -75,7 +83,8 @@ class Treeset:
 
 
     def is_subset(self, other_set):
-        '''return a boolean indicating whether other_set is a subset of this set'''
+        '''return a boolean indicating whether other_set is a subset of this set
+        Average Case Runtime: O(n) '''
         if len(self) > len(other_set): 
             return False
         for item in self.tree.items_pre_order():
