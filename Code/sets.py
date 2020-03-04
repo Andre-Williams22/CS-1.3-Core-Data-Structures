@@ -70,7 +70,7 @@ class Treeset:
 
     def difference(self,other_set):
         '''return a new set that is the difference of this set and other_set 
-        Average Case Runtime: O(n)'''
+        Average Case Runtime: O(n) because we have to check all the nodes to see if in the other set.'''
         # make a new empty set
         new_set = Treeset()
         # iterate over each item in the self set 
@@ -84,7 +84,8 @@ class Treeset:
 
     def is_subset(self, other_set):
         '''return a boolean indicating whether other_set is a subset of this set
-        Average Case Runtime: O(n) '''
+        Best Case: O(1) if the size is of other_set is bigger then we return False
+        Average Case Runtime: O(n) if we traverse through all the nodes. '''
         if len(self) > len(other_set): 
             return False
         for item in self.tree.items_pre_order():
