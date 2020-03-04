@@ -94,7 +94,7 @@ class BinarySearchTree(object):
         """Return an item in this binary search tree matching the given item,
         or None if the given item is not found.
         TODO: Best case running time: O(1) because the item could be the first in the tree. Average case is O(log n) because binary search is done on the tree.
-        TODO: Worst case running time:O(n) because you would have to traverse through the entire tree. """
+        TODO: Worst case running time:O(log(n)) because you would have to traverse through the entire tree. """
         # Find a node with the given item, if any
         node = self._find_node_recursive(item, self.root)
         # TODO: Return the node's data if found, or None

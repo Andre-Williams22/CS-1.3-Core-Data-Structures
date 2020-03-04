@@ -1,12 +1,13 @@
+#!python
 #from hashtable import HashTable
-from binarytree import BinarySearchTree
-
+from binarytree import BinarySearchTree, BinaryTreeNode
 
 class Treeset:
     def __init__(self, elements=None):
         ''' initialize a new empty set structure, and add each element if a sequence is given '''
         #self.hash = HashTable()
         self.tree = BinarySearchTree()
+        self.element = BinaryTreeNode()
         self.size = 0 
         if elements is not None:
             for item in elements:
@@ -85,7 +86,7 @@ class Treeset:
     def is_subset(self, other_set):
         '''return a boolean indicating whether other_set is a subset of this set
         Best Case: O(1) if the size is of other_set is bigger then we return False
-        Average Case Runtime: O(n) if we traverse through all the nodes. '''
+        Average Case Runtime: O(log(n)) if we traverse through all the nodes. In the smaller set. '''
         if len(self) > len(other_set): 
             return False
         for item in self.tree.items_pre_order():

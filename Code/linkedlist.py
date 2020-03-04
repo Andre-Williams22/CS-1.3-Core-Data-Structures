@@ -77,7 +77,7 @@ class LinkedList(object):
     def get_at_index(self, index):
         """Return the item at the given index in this linked list, or
         raise ValueError if the given index is out of range of the list size.
-        Best case running time: O(i) under what conditions? [TODO]
+        Best case running time: O(1) under what conditions? [TODO]
         Worst case running time: O(n) under what conditions? [TODO]"""
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index < self.size):
@@ -183,7 +183,7 @@ class LinkedList(object):
     def replace(self, old_item, new_item):
         """Replace the given old_item in this linked list with given new_item
         using the same node, or raise ValueError if old_item is not found.
-        Best case running time: O(i) under what conditions? [TODO]
+        Best case running time: O(1) under what conditions? [TODO]
         Worst case running time: O(n) under what conditions? [TODO]"""
         # TODO: Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
