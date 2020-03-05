@@ -48,14 +48,16 @@ class Treeset:
     def union(self,other_set):
         '''return a new set that is the union of this set and other_set
         Runtime: (m + n) * log(m) because we add the length of each set to the time of the add function calls '''
-        new_set = Treeset()
-        for element in self.tree.items_pre_order(): #O(log(m)) # pre-order will generate the exact same tree every time 
-            new_set.add(element)
-
-        for element in self.tree.items_pre_order(): # pre-order will generate the exact same tree every time
-            if not new_set.contains(element): #O(log(m))
-                new_set.add(element)
-        return new_set 
+        new_set = self.tree.items_pre_order()
+    
+        for element in other_set.tree.items_pre_order(): #O(log(m)) # pre-order will generate the exact same tree every time 
+            if element not in new_set:
+                new_set.append(element)
+        return Treeset(new_set)
+        # for element in self.tree.items_pre_order(): # pre-order will generate the exact same tree every time
+        #     if other_set.contains(element): #O(log(m))
+        #         new_set.add(element)
+        # return new_set 
         
 
     def intersection(self,other_set):
@@ -75,9 +77,9 @@ class Treeset:
         # make a new empty set
         new_set = Treeset()
         # iterate over each item in the self set 
-        for element in self.tree.items_pre_order:
-        # if the item is not in other set then add to the new set
-            if element not in other_set.contains():
+        for element in self.tree.items_pre_order():
+        # if the item is not in other set then add to the new set    
+            if not other_set.contains(element):
                 new_set.add(element)
         # return the new set
         return new_set 

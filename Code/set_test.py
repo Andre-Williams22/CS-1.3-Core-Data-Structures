@@ -62,6 +62,7 @@ class TreesetTest(unittest.TestCase):
         set.remove('C')
         assert set.size == 0
 
+
     def test_union(self):
         set_1 = Treeset([1, 2, 3])
         set_2 = Treeset([4, 5, 6])
@@ -73,41 +74,41 @@ class TreesetTest(unittest.TestCase):
         assert new_set.contains(5) is True
         assert new_set.contains(6) is True
 
-    #     assert new_set.contains(7) is False
-    #     assert new_set.contains(0) is False
+        assert new_set.contains(7) is False
+        assert new_set.contains(0) is False
 
-    # def test_intersection(self):
-    #     set_1 = Treeset([1, 2, 3])
-    #     set_2 = Treeset([3, 4, 5])
-    #     new_set = set_1.intersection(set_2)
-    #     assert new_set.contains(3) is True
+    def test_intersection(self):
+        set_1 = Treeset([1, 2, 3])
+        set_2 = Treeset([3, 4, 5])
+        new_set = set_1.intersection(set_2)
+        assert new_set.contains(3) is True
 
-    #     assert new_set.contains(1) is False
-    #     assert new_set.contains(2) is False
-    #     assert new_set.contains(4) is False
-    #     assert new_set.contains(5) is False
+        assert new_set.contains(1) is False
+        assert new_set.contains(2) is False
+        assert new_set.contains(4) is False
+        assert new_set.contains(5) is False
 
-    #     set_3 = Treeset([0, 4, 5])
-    #     new_set = set_1.intersection(set_3)
-    #     assert new_set.size == 0
+        set_3 = Treeset([0, 4, 5])
+        new_set = set_1.intersection(set_3)
+        assert new_set.size == 0
 
-    # def test_difference(self):
-    #     set_1 = Treeset([1, 2, 3])
-    #     set_2 = Treeset([3, 4, 5])
-    #     new_set = set_1.difference(set_2)
-    #     assert new_set.contains(3) is False
+    def test_difference(self):
+        set_1 = Treeset([1, 2, 3])
+        set_2 = Treeset([3, 4, 5])
+        new_set = set_1.difference(set_2)
+        assert new_set.contains(3) is False
 
-    #     assert new_set.contains(1) is True
-    #     assert new_set.contains(2) is True
-    #     assert new_set.contains(4) is False
-    #     assert new_set.contains(5) is False
+        assert new_set.contains(1) is True
+        assert new_set.contains(2) is True
+        assert new_set.contains(4) is False
+        assert new_set.contains(5) is False
 
-    # def test_is_subset(self):
-    #     set_1 = Treeset([1, 2, 3])
-    #     set_2 = Treeset([1, 2, 3, 4, 5])
+    def test_is_subset(self):
+        set_1 = Treeset([1, 2, 3])
+        set_2 = Treeset([1, 2, 3, 4, 5])
 
-    #     assert set_1.is_subset(set_2) is True
-    #     assert set_2.is_subset(set_1) is False
+        assert set_1.is_subset(set_2) is True
+        assert set_2.is_subset(set_1) is False
 
 if __name__ == '__main__':
     unittest.main()
