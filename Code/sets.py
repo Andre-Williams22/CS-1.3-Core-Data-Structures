@@ -28,7 +28,7 @@ class Treeset:
 
     def add(self,element):
         ''' add element to this set, if not present already 
-        Average case Runtime: O(log (n)) Because we must apply binary search to add an element '''
+        Average case Runtime: O(log(n)) Because we must apply binary search to add an element '''
         if self.tree.contains(element):
             raise ValueError(f'Cannot add element to set again: {element}')
         else:

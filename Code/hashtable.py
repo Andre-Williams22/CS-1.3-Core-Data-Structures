@@ -32,7 +32,7 @@ class HashTable(object):
         #     num_buckets += 1
         # return self.length() / num_buckets
 
-        return (self.length() / len(self.buckets))
+        return (self.size/ len(self.buckets))
 
     def keys(self):
         """Return a list of all keys in this hash table.
