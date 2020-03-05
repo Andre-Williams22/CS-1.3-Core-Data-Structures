@@ -36,7 +36,7 @@ class HashTable(object):
 
     def keys(self):
         """Return a list of all keys in this hash table.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: O(n) under what conditions? [TODO]"""
         # Collect all keys in each of the buckets
         all_keys = []
         for bucket in self.buckets:

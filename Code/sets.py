@@ -7,17 +7,17 @@ class Treeset:
         ''' initialize a new empty set structure, and add each element if a sequence is given '''
         #self.hash = HashTable()
         self.tree = BinarySearchTree()
-        self.element = BinaryTreeNode()
+        # self.element = BinaryTreeNode()
         self.size = 0 
         if elements is not None:
             for item in elements:
-                self.insert(item)
+                self.add(item)
 
 
     def size(self):
         '''property that tracks the number of elements in constant time 
         Average Case Runtime: O(1) because we're updating the size variable after each deletion and addition to an element'''
-        return self.size 
+        return self.tree.size 
 
 
     def contains(self,element):
@@ -87,7 +87,7 @@ class Treeset:
         '''return a boolean indicating whether other_set is a subset of this set
         Best Case: O(1) if the size is of other_set is bigger then we return False
         Average Case Runtime: O(log(n)) if we traverse through all the nodes. In the smaller set. '''
-        if len(self) > len(other_set): 
+        if self.size > other_set.size: 
             return False
         for item in self.tree.items_pre_order():
             if not other_set.contains(item):
