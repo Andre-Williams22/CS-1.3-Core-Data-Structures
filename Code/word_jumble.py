@@ -11,6 +11,9 @@ def open_file(length):
         for line in fd:
             line = line.strip()
 
+    # Returns set of words in length 
+    return Treeset([word for word in fd if len(word) == length])
+
 
 # print(hashtable)
 
@@ -25,14 +28,6 @@ def open_file(length):
         
 # #print(allPermutations())
 
-
-
-
-# if __name__ == "__main__": 
-#     pass
-
-#     # str = 'ABC'
-#     # allPermutations(str)
 
 import pprint
 from collections import deque
