@@ -15,7 +15,6 @@ def open_file(length):
     # Returns set of words in length 
     return Treeset([word for word in fd if len(word) == length])
 
-
 def reconfigure(word):
     '''Returns the items in common in a string from the two sets '''
     anagrams = list(permutations(word))
@@ -34,6 +33,30 @@ def reconfigure(word):
     else:
         return 'Word Does not exist'
 
+
+def solve_puzzle(jumbled_list):
+    '''solves jumble by unscrambling a list of words '''
+    # create a dictionary to store the words
+    hashtable = HashTable(len(jumbled_list))
+    
+    jumbled_list = [reconfigure(word) for word in jumbled_list]
+
+    for i in range(len(jumbled_list)):
+        print(f"'{jumbled_list[i]}'--> '{jumbled_list[i]}'" )
+        # store indices we're interested in at each solved word
+    letters_of_interest = [
+        jumbled_list[0][2] + jumbled_list[0][4],
+        (jumbled_list[1][0] + jumbled_list[1][1] +
+         jumbled_list[1][3]),
+        jumbled_list[2][4],
+        jumbled_list[3][3] + jumbled_list[3][4],
+    ]
+
+    solution = ''
+    for letter in letters_of_interest:
+        solution += letter
+    return solution
+
 # print(hashtable)
 
 # # Function to find permutations of a given string 
@@ -47,37 +70,28 @@ def reconfigure(word):
         
 # #print(allPermutations())
 
+# def trie_recursion(trie_ds, word):
+#     try:
+#         letter = word.popleft()
+#         out = trie_recursion(trie_ds.get(letter, {}), word)
+#     except IndexError:
+#         # End of the word
+#         return {}
 
-import pprint
-from collections import deque
+#     # Dont update if letter already present
+#     if not trie_ds.has_key(letter):
+#         trie_ds[letter] = out
 
-pp = pprint.PrettyPrinter(indent=4)
+#     return trie_ds
 
-# inp = raw_input("Enter a sentence to show as trie\n")
-# words = inp.split(" ")
-trie = {}
+# for word in line:
+#     # Go through each word
+#     trie = trie_recursion(trie, deque(word))
 
-
-def trie_recursion(trie_ds, word):
-    try:
-        letter = word.popleft()
-        out = trie_recursion(trie_ds.get(letter, {}), word)
-    except IndexError:
-        # End of the word
-        return {}
-
-    # Dont update if letter already present
-    if not trie_ds.has_key(letter):
-        trie_ds[letter] = out
-
-    return trie_ds
-
-for word in line:
-    # Go through each word
-    trie = trie_recursion(trie, deque(word))
-
-pprint.pprint(trie)
+# pprint.pprint(trie)
 
 
 if __name__ == 'main':
-    pass 
+    first_four = HashTable(4)
+    jumbled = ['tefon','sokik','niumem','siconu']
+    print(f'The answer to the jumble is: {solve_puzzle(jumbled)}')
