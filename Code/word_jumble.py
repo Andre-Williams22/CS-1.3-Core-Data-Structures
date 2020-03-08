@@ -2,6 +2,7 @@
 from itertools import permutations 
 from sets import Treeset 
 from hashtable import HashTable
+from linkedlist import LinkedList
 
 # hashtable = {}
 
@@ -14,6 +15,24 @@ def open_file(length):
     # Returns set of words in length 
     return Treeset([word for word in fd if len(word) == length])
 
+
+def reconfigure(word):
+    '''Returns the items in common in a string from the two sets '''
+    anagrams = list(permutations(word))
+    # convert this to a list of str, not tuple
+    anagrams = [''.join(list(word)) for word in anagrams]
+    # convert this to a Set
+    anagrams = Treeset(anagrams)
+    # generate the set of all English words in the dictionary file
+    actual_words = open_file(len(word))
+    # find the intersection between the two
+    overlap = anagrams.intersection(actual_words)
+    # dump all the words into a LinkedList, and return the head
+    unscrambled_words = LinkedList(word for word in overlap.collection.keys())
+    if unscrambled_words.head is not None:
+        return unscrambled_words.head.data
+    else:
+        return 'Word Does not exist'
 
 # print(hashtable)
 
