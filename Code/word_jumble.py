@@ -1,12 +1,15 @@
 # import os
-# from itertools import permutations 
-# from sets import Treeset 
+from itertools import permutations 
+from sets import Treeset 
+from hashtable import HashTable
 
 # hashtable = {}
 
-with open("/usr/share/dict/words", 'r') as fd:
-    for line in fd:
-        line = line.strip()
+def open_file(length):
+    ''' Return words that are length of input word''' 
+    with open("/usr/share/dict/words", 'r') as fd:
+        for line in fd:
+            line = line.strip()
 
 
 # print(hashtable)
@@ -60,3 +63,7 @@ for word in line:
     trie = trie_recursion(trie, deque(word))
 
 pprint.pprint(trie)
+
+
+if __name__ == 'main':
+    pass 
