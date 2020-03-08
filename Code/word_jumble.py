@@ -1,6 +1,8 @@
 # import os
+import sys
 from itertools import permutations 
 from sets import Treeset 
+from stack import LinkedStack
 from hashtable import HashTable
 from linkedlist import LinkedList
 
@@ -8,12 +10,13 @@ from linkedlist import LinkedList
 
 def open_file(length):
     ''' Return words that are length of input word''' 
-    with open("/usr/share/dict/words", 'r') as fd:
-        for line in fd:
-            line = line.strip()
+    # get words from the words file
+    file = open("/usr/share/dict/words", "r")
+    words_list = file.read().split("\n")
+    file.close()
 
     # Returns set of words in length 
-    return Treeset([word for word in fd if len(word) == length])
+    return Treeset([word for word in words_list if len(word) == length])
 
 def reconfigure(word):
     '''Returns the items in common in a string from the two sets '''
