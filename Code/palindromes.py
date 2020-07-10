@@ -41,11 +41,7 @@ def is_palindrome_iterative(text):
         right -= 1 # increment the right by 1 
     return True
 
-    # text = re.sub('[^A-Za-z]+', '', text)
-    # for i in range(int(len(text)//2)):
-    #     if text[i].lower() != text[len(text)-1-i].lower():
-    #         return False
-    # return True 
+
 
 
 def is_palindrome_recursive(text, left=None, right=None):
