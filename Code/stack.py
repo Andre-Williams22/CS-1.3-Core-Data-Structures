@@ -37,7 +37,7 @@ class LinkedStack(object):
     def push(self, item):
         """Insert the given item on the top of this stack.
         Running time: O(1) – Why? Because this adds the data to the first index in the list"""
-        # TODO: Push given item
+        # TODO: Push given item to top of the stack 
 
         return self.list.prepend(item)
 
@@ -49,7 +49,9 @@ class LinkedStack(object):
         
         if self.list.is_empty():
             return None 
-        return self.list.head.data # looks at end of ll which is top of stack and grabs the tail.
+
+        # looks at top of ll which is top of stack and grabs the head.
+        return self.list.head.data 
 
     def pop(self):
         """Remove and return the item on the top of this stack,
@@ -62,9 +64,6 @@ class LinkedStack(object):
         print("top of stack: ", temp_node)
         self.list.delete(temp_node)
         return temp_node
-       
-
-
 
 
 # Implement ArrayStack below, then change the assignment at the bottom
@@ -110,7 +109,7 @@ class ArrayStack(object):
         or None if this stack is empty."""
         # TODO: Return top item, if any
         if len(self.list) != 0:
-            return self.list[-1] # return index
+            return self.list[-1] # return last index
         else:
             return None 
 
